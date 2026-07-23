@@ -1,0 +1,11 @@
+name = "sour-ai"
+main = "dist/server.cjs"
+compatibility_date = "2026-07-23"
+
+[site]
+bucket = "./dist"
+
+# For pages functions you may not need 'main' — adjust if using Pages vs Workers
+# build.command can be added to let wrangler run the build step prior to deploy
+# [build]
+#  command = "npm run build"
