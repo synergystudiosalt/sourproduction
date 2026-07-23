@@ -7,7 +7,7 @@
     "dev": "tsx server.ts",
     "build:server": "esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "build:worker": "esbuild src/worker.ts --bundle --platform=neutral --format=esm --target=es2020 --outfile=dist/worker.mjs",
-    "build": "vite build && npm run build:server",
+    "build": "vite build && npm run build:worker",
     "build:cloudflare": "vite build && npm run build:worker",
     "start": "node dist/server.cjs",
     "clean": "rm -rf dist server.cjs",
