@@ -15,28 +15,3 @@
    npm run dev
    ```
    The app will be at `http://localhost:3000`
-
-## Deploy to Cloudflare Pages
-
-**Deploy the entire app (frontend + backend) to Cloudflare Pages with Pages Functions:**
-
-See [CLOUDFLARE_DEPLOYMENT.md](./CLOUDFLARE_DEPLOYMENT.md) for step-by-step instructions.
-
-TL;DR:
-1. Connect your GitHub repo to Cloudflare Pages
-2. Set root directory to `sour.ai`
-3. Add `GEMINI_API_KEY` (or `GEMINI_API_KEYS`) as environment variable
-4. Deploy
-
-### Model routing
-
-Each sour.ai model tier is pinned to a specific model in `server.ts` (`MODEL_ROUTES`):
-
-| Tier | Provider | Model |
-| --- | --- | --- |
-| Omni-Flash | Gemini | `gemini-3.5-flash-lite` |
-| Intelligence | Groq | `llama-3.1-8b-instant` |
-| Ultra | Gemini | `gemma-4-31b-it` |
-| Overclock | Gemini | `gemma-4-31b-it` |
-
-If a tier's primary model fails, every tier falls back to the same global fallback model (`gemma-4-21b`) before finally trying Groq's default model. No sampling parameters (`temperature`, `top_p`, `top_k`) are set on any request — `gemini-3.5-flash-lite` and the other configured models rely on their own built-in defaults/system-prompt steering instead.
